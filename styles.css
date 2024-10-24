@@ -1,30 +1,43 @@
-body {
-    font-family: Arial, sans-serif;
+/* リセットされた余白とパディングを再調整 */
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa;
+    width: 100%;
+    height: auto; /* height: 100%; を削除 */
+}
+
+/* ボックスモデルを調整して、要素の幅が崩れないようにする */
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    align-items: stretch;
+    width: 100%; /* max-width を width に変更 */
+    margin: 0; /* 自動余白をなくす */
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 header {
     width: 100%;
     text-align: center;
-    background-color: #00796b;
+    background-color: #007ac6;
     color: white;
-    padding: 10px 0;
-    margin-bottom: 20px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 auto; /* h1をheader内で中央配置 */
+    font-size: 28px;
+    max-width: 600px; /* h1の幅をformと揃える */
+    text-align: left; /* テキストを左寄せ */
+    padding-left: 10px; /* 左側に余白を追加してバランスを取る */
 }
 
 main {
@@ -35,95 +48,147 @@ main {
     align-items: center;
 }
 
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-#city-input {
-    padding: 10px;
-    font-size: 16px;
-    width: 60%;
-    border: 1px solid #00796b;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-#search-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #00796b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.weather-info {
-    background-color: white;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+form {
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
+    text-align: center; /* フォーム全体を中央揃え */
 }
 
-#weather-icon {
-    width: 100px;
-    height: 100px;
-}
-
-.forecast {
+form table {
     width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
+    border-spacing: 0;
+    border: 1px solid #EEE;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-#forecast-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+form th,
+form td {
+    padding: 15px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: normal;
 }
 
-.forecast-item {
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: center;
-    width: calc(20% - 10px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+form th {
+    width: 200px;
+    text-align: left;
 }
 
-aside {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 20px;
+.hissu {
+    display: inline-block;
 }
 
-aside h3 {
-    text-align: center;
-    background-color: #00796b;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+.hissu::after {
+    content: "必須";
+    border: 1px solid #ffffff;
+    padding: 0 3px;
+    font-size: 80%;
+    background: #d40000;
+    color: #FFF;
+    transform: translateY(-50%);
 }
 
-#city-list {
-    list-style: none;
-    padding: 0;
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select {
+    background: #f2f2f2;
+    border: 1px solid #999;
     margin: 0;
+    width: calc(100% - 20px);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
 
-#city-list li {
-    background-color: white;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.buttonwrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ボタン間のスペース */
+    padding: 20px 0;
+    flex-wrap: wrap; /* 小さい画面ではボタンを折り返す */
+    width: 100%; /* 幅を100%にして親要素いっぱいに広げる */
+}
+
+.left {
+    text-align: left;
+}
+
+.btn-blue {
+    display: inline-block;
+    background: #007ac6;
+    padding: 10px 20px;
     text-align: center;
+    color: #FFF;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.btn {
+    background: #f2f2f2;
+    color: #333;
+    /* display: inline-block; */
+    padding: 10px 20px;
+    text-align: center;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 150px;
+}
+
+form input[type="submit"]:hover,
+form input[type="button"]:hover {
+    opacity: 0.8;
+}
+
+.btn,.btn-blue{
+    justify-content:center;
+}
+
+@media (max-width: 500px) {
+
+    form table,
+    form tr,
+    form th,
+    form td {
+        display: block;
+        width: 100%;
+    }
+
+    form th {
+        padding: 13px 10px 0 0;
+    }
+
+    .hissu::after {
+        right: auto;
+        left: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea,
+    form select {
+        width: calc(100% - 20px);
+    }
+
+    form input[type="submit"],
+    form input[type="button"] {
+        width: calc(100% - 20px);
+        border-radius: 20px;
+    }
+}
+
+.hidden {
+    display: none;
 }
